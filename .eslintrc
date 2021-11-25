@@ -1,0 +1,16 @@
+{
+  "parser": "babel-eslint",
+  "extends": "eslint:recommended",
+  "env": {
+    "node": true,
+    "es6": true,
+    "mocha": true,
+    "commonjs": true
+  },
+  "ecmaFeatures": {
+    "arrowFunctions": true
+  },
+  "rules": {
+    "func-style": [2, "declaration", { "allowArrowFunctions": true }]
+  }
+}

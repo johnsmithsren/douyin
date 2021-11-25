@@ -1,0 +1,44 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "commonjs",
+        "outDir": "./dist",
+        "sourceMap": true,
+        "removeComments": true,
+        "noImplicitAny": false,
+        "preserveConstEnums": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "typeRoots": [
+            "node_modules/@types",
+            "typings"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "config/*": [
+                "./src/config/*"
+            ],
+            "auth/*": [
+                "./src/auth/*"
+            ],
+            "utils/*": [
+                "./src/utils/*"
+            ],
+            "middleware/*": [
+                "./src/middleware/*"
+            ],
+            "controllers/*": [
+                "./src/controllers/*"
+            ]
+        }
+    },
+    "compileOnSave": false,
+    "includes": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

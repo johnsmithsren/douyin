@@ -1,0 +1,53 @@
+{
+  "name": "platform-ops-server",
+  "private": true,
+  "license": "ISC",
+  "scripts": {
+    "resetDB": "ts-node ./scripts/resetdb.ts",
+    "build:Proto": "./scripts/build_proto_file",
+    "test": "cross-env NODE_ENV=test npm run resetDB && cross-env NODE_ENV=test mocha --exit",
+    "coverage": "nyc --reporter=html --reporter=text yarn test",
+    "watch": "nodemon --config nodemon.json",
+    "start": "ts-node src/app.ts",
+    "prod": "cross-env NODE_ENV=production nodemon --config nodemon.json",
+    "release": "cross-env NODE_ENV=release nodemon --config nodemon.json",
+    "lint": "eslint src --ext .ts",
+    "fix": "eslint src --ext .ts --fix",
+    "debug": "ts-node-dev --inspect -- ./src/app.ts"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "@types/ioredis": "^4.17.8",
+    "axios": "^0.24.0",
+    "cron": "^1.8.2",
+    "cross-env": "^5.2.0",
+    "ioredis": "^4.16.2",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-convert": "^1.2.0",
+    "koa-json": "^2.0.2",
+    "koa-router": "^7.4.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.0.12",
+    "protobufjs": "^6.11.2",
+    "puppeteer": "^11.0.0",
+    "request": "^2.88.2",
+    "rimraf": "^2.6.3",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.1.2",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.48",
+    "@types/koa-convert": "^1.2.2",
+    "@types/koa-json": "^2.0.18",
+    "@types/koa-router": "^7.0.40",
+    "@types/lodash": "^4.14.122",
+    "babel-eslint": "^6.0.4",
+    "@istanbuljs/nyc-config-typescript": "^1.0.1"
+  }
+}
