@@ -1,6 +1,4 @@
 import { CustomError, HttpError } from "../utils/error";
-import { winstonLogger } from "../utils/winstonLogger";
-let localLogger = winstonLogger(module);
 export default function async(ctx, next) {
     return next().catch((err) => {
         let code = 500;
@@ -10,11 +8,9 @@ export default function async(ctx, next) {
             ctx.status = err instanceof HttpError ? res.code : 200;
             code = res.code;
             message = res.message;
-            localLogger.error(`err: ${JSON.stringify(err)}`);
         } else {
             ctx.status = 500;
             message = err.message;
-            localLogger.error(`err: ${JSON.stringify(err)}`);
         }
         ctx.body = {
             code,

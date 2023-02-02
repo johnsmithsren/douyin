@@ -1,19 +1,24 @@
-import { defaultConfig } from "../config/config"
-const Redis = require("ioredis");
+import Redis from "ioredis"
 const config = {
     redis: {
-        host: defaultConfig.host,
-        port: defaultConfig.port,
-        password: defaultConfig.password,
-        db: defaultConfig.db,
-        family: defaultConfig.family,
+        port: 0,
+        host: "xxxx",
+        password: "xxxx",
+        db: 2,
     },
 };
-export const redis = new Redis(config.redis);
-export default async function (ctx, next) {
-    ctx.redis = redis;
-    await next();
+
+class RedisStore {
+    redis: Redis.Redis;
+    constructor() {
+        this.redis = new Redis(config.redis);
+    }
+    getRedis() {
+        return this.redis;
+    }
 }
+
+export default new RedisStore();
 
 
 
